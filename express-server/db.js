@@ -1,6 +1,8 @@
 const { MongoClient } = require("mongodb");
+const dbConfig = require('config').database;
 
-const uri = "mongodb://localhost:27017/data?retryWrites=true&w=majority";
+const { uri } = dbConfig;
+console.log("🚀 ~ file: db.js ~ line 5 ~ uri", uri)
 
 const client = new MongoClient(uri);
 
