@@ -16,8 +16,11 @@ spec:
     spec:
       containers:
       - name: express-server
-        image: emil/express-server
+        image: emil/express-server:1.0.1
         imagePullPolicy: Never
+        env:
+          - name: NODE_CONFIG_ENV
+            value: "production"
         ports:
         - containerPort: 3000
 ---
