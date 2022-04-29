@@ -1,9 +1,14 @@
 var express = require('express');
+const db = require('../db');
 var router = express.Router();
 
+
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+router.get('/', async function(req, res, next) {
+
+  const users = await db.collection('users').find({}, {limit: 100}).toArray();
+
+  return res.json(users);
 });
 
 module.exports = router;
