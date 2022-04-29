@@ -5,7 +5,7 @@ metadata:
   labels:
     app: express
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: express
@@ -19,7 +19,7 @@ spec:
         image: emil/express-server
         imagePullPolicy: Never
         ports:
-        - containerPort: 8080
+        - containerPort: 3000
 ---
 apiVersion: v1
 kind: Service
@@ -27,8 +27,8 @@ metadata:
   name: express-server-service
 spec:
   selector:
-    app: mongodb
+    app: express
   ports:
     - protocol: TCP
-      port: 3000
+      port: 80
       targetPort: 3000
